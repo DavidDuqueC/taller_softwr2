@@ -1,0 +1,1 @@
+los micreoservicios de FLask y Express tienen respectivamente su requeriments.txt para instalar las dependencias, en el microservicio de flask se debe crear su propio firebase-adminsdk.json
