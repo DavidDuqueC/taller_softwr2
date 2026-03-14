@@ -43,10 +43,5 @@ class AuthController extends Controller
     }
 
    
-    public function me()
-    {
-        $user = JWTAuth::user();
-        return response()->json(compact('user'));
-    }
 }
 

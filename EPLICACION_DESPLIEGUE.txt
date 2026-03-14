@@ -1,1 +1,5 @@
 los micreoservicios de FLask y Express tienen respectivamente su requeriments.txt para instalar las dependencias, en el microservicio de flask se debe crear su propio firebase-adminsdk.json
+Endpoints:
+FLASK_SERVICE_URL=http://localhost:5000
+EXPRESS_SERVICE_URL=http://localhost:3000
+MICROSERVICES_API_KEY=miclave123
