@@ -62,6 +62,37 @@ app.get('/api/ventas', async (req, res) => {
   }
 });
 
+app.get('/api/ventas/usuario/:usuarioId', async (req, res) => {
+  try {
+    const { usuarioId } = req.params;
+    const ventas = await Venta.find({ usuarioId }).sort({ fecha: -1 });
+    res.json(ventas);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/ventas/fecha/:fecha', async (req, res) => {
+  try {
+    const { fecha } = req.params;
+    
+    // Crear rango del día (inicio y fin)
+    const fechaInicio = new Date(fecha);
+    fechaInicio.setHours(0, 0, 0, 0);
+    
+    const fechaFin = new Date(fecha);
+    fechaFin.setHours(23, 59, 59, 999);
+    
+    const ventas = await Venta.find({
+      fecha: { $gte: fechaInicio, $lte: fechaFin }
+    }).sort({ fecha: -1 });
+    
+    res.json(ventas);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.get('/api/ventas/:id', async (req, res) => {
   try {
     const venta = await Venta.findById(req.params.id);

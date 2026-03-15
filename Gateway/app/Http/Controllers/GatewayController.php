@@ -53,6 +53,30 @@ class GatewayController extends Controller
         ];
     }
 
+    public function getVentasPorUsuario($usuarioId)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => env('MICROSERVICES_API_KEY'),
+        ])->get(env('EXPRESS_SERVICE_URL') . '/api/ventas/usuario/' . $usuarioId);
+
+        return response()->json(
+            $response->json(),
+            $response->status()
+        );
+    }
+
+    public function getVentasPorFecha($fecha)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => env('MICROSERVICES_API_KEY'),
+        ])->get(env('EXPRESS_SERVICE_URL') . '/api/ventas/fecha/' . $fecha);
+
+        return response()->json(
+            $response->json(),
+            $response->status()
+        );
+    }
+
 
     public function crearVenta(Request $request)
     {

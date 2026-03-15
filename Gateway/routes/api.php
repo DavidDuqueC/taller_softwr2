@@ -16,6 +16,8 @@ Route::middleware(['jwt.auth'])->group(function () {
     
     Route::get('ventas', [GatewayController::class, 'getVentas']);
     Route::post('ventas', [GatewayController::class, 'crearVenta']);
+    Route::get('ventas/usuario/{usuarioId}', [GatewayController::class, 'getVentasPorUsuario']);
+    Route::get('ventas/fecha/{fecha}', [GatewayController::class, 'getVentasPorFecha']);
     
     Route::post('vender', [GatewayController::class, 'vender']);
 });
